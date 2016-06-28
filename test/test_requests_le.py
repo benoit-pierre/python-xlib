@@ -1,9 +1,5 @@
 #!/usr/bin/env python2
 
-import sys, os
-sys.path.insert(0, os.path.normpath(os.path.join(__file__, '../..')))
-
-import unittest
 from Xlib.protocol import request, event
 from . import LittleEndianTest as EndianTest
 from . import DummyDisplay
@@ -3930,7 +3926,3 @@ class TestNoOperation(EndianTest):
         args, remain = request.NoOperation._request.parse_binary(self.req_bin_0, dummy_display, 1)
         self.assertBinaryEmpty(remain)
         self.assertEqual(args, self.req_args_0)
-
-
-if __name__ == "__main__":
-    unittest.main()

@@ -1,10 +1,7 @@
 #!/usr/bin/env python
 
-import sys
 import os
 import unittest
-
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 import Xlib.display
 import Xlib.error
@@ -166,7 +163,3 @@ class TestXlibDisplay(unittest.TestCase):
     def test_get_selection_owner(self):
         atom = self.display.get_atom(self.display_num)
         self.assertEqual(self.display.get_selection_owner(atom), 0)
-
-
-if __name__ == '__main__':
-    unittest.main()

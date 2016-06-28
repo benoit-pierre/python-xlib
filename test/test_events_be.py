@@ -1,9 +1,5 @@
 #!/usr/bin/env python2
 
-import sys, os
-sys.path.insert(0, os.path.normpath(os.path.join(__file__, '../..')))
-
-import unittest
 from Xlib.protocol import request, event
 from . import BigEndianTest as EndianTest
 from . import DummyDisplay
@@ -848,8 +844,3 @@ class TestMappingNotify(EndianTest):
             assert args == self.evt_args_0
         except AssertionError:
             raise AssertionError(args)
-
-
-if __name__ == "__main__":
-    check_endian()
-    unittest.main()

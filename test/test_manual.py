@@ -1,8 +1,5 @@
 #!/usr/bin/env python
 
-import sys, os
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-
 import unittest
 from Xlib.protocol import rq
 
@@ -51,6 +48,3 @@ class TestListWithFancyValue(unittest.TestCase):
 
     def testToBinary1(self):
         self.s1.to_binary(['1', '2', '3'])
-
-if __name__ == '__main__':
-    unittest.main()

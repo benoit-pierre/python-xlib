@@ -256,12 +256,6 @@ def build_request(endian):
         self.assertEqual(args, self.reply_args_%(n)d)
 ''' % { 'req': req.__name__, 'n': i })
 
-    fpy.write('''
-
-if __name__ == "__main__":
-    unittest.main()
-''')
-
 
 def build_event(endian):
     fc = open('genevent.c', 'w')
@@ -404,12 +398,6 @@ def build_event(endian):
         self.assertBinaryEmpty(remain)
         self.assertEqual(args, self.evt_args_%(n)d)
 ''' % { 'evt': evt.__name__, 'n': i })
-
-    fpy.write('''
-
-if __name__ == "__main__":
-    unittest.main()
-''')
 
 
 def gen_func(fc, funcname, structname, outputname, pydef, cdef, vardefs):
@@ -1020,10 +1008,6 @@ void output(char *name, void *data, int length)
 
 PY_HEADER = r'''#!/usr/bin/env python2
 
-import sys, os
-sys.path.insert(0, os.path.normpath(os.path.join(__file__, '../..')))
-
-import unittest
 from Xlib.protocol import request, event
 from . import %(endname)sTest as EndianTest
 from . import DummyDisplay

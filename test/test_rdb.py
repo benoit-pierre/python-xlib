@@ -1,10 +1,5 @@
 #!/usr/bin/env python
 
-import sys
-import os
-
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-
 import Xlib.rdb
 
 import unittest
@@ -146,7 +141,3 @@ class TestRDB(unittest.TestCase):
         db3.insert_resources(resource_set2)
 
         assert db1.db == db3.db
-
-
-if __name__ == '__main__':
-    unittest.main()
