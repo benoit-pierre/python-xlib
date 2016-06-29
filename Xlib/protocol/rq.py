@@ -397,9 +397,7 @@ class Binary(ValueField):
         else:
             slen = length
 
-        data_bytes = data[:length]
-
-        return data_bytes, data[slen:]
+        return data[:length], data[slen:]
 
 
 class String8(ValueField):
