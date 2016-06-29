@@ -129,6 +129,24 @@ _struct_test('string8 pad', (
     ('s3', lambda name: rq.String8(name, pad=1), "supercalifragilisticexpialidocious", partial(packstr, padding=2)),
 ))
 
+_struct_test('binary', (
+    (None, lambda name: rq.LengthOf('s1', 1)  , None                                 , pack('B', 7) ),
+    (None, lambda name: rq.LengthOf('s2', 2)  , None                                 , pack('H', 13)),
+    (None, lambda name: rq.LengthOf('s3', 4)  , None                                 , pack('L', 34)),
+    ('s1', lambda name: rq.Binary(name, pad=0), b"testing"                           , lambda v: v),
+    ('s2', lambda name: rq.Binary(name, pad=0), b"one two three"                     , lambda v: v),
+    ('s3', lambda name: rq.Binary(name, pad=0), b"supercalifragilisticexpialidocious", lambda v: v),
+))
+
+_struct_test('binary pad', (
+    (None, lambda name: rq.LengthOf('s1', 1)  , None                                 , pack('B', 7) ),
+    (None, lambda name: rq.LengthOf('s2', 2)  , None                                 , pack('H', 13)),
+    (None, lambda name: rq.LengthOf('s3', 4)  , None                                 , pack('L', 34)),
+    ('s1', lambda name: rq.Binary(name, pad=1), b"testing"                           , lambda v: v + b'\0' * 1),
+    ('s2', lambda name: rq.Binary(name, pad=1), b"one two three"                     , lambda v: v + b'\0' * 3),
+    ('s3', lambda name: rq.Binary(name, pad=1), b"supercalifragilisticexpialidocious", lambda v: v + b'\0' * 2),
+))
+
 _struct_test('fixed binary', (
     ('s1', lambda name: rq.FixedBinary(name, 7 ), b"testing"                           , lambda v: v),
     ('s2', lambda name: rq.FixedBinary(name, 13), b"one two three"                     , lambda v: v),
