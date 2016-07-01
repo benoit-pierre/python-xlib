@@ -14,9 +14,13 @@ import Xlib.protocol.rq
 import Xlib.xobject.fontable
 import Xlib.X
 
+from . import XserverTest
 
-class TestXlibDisplay(unittest.TestCase):
+
+class TestXlibDisplay(XserverTest):
+
     def setUp(self):
+        super(TestXlibDisplay, self).setUp()
         # Create authority file.
         self.display_num = os.getenv("DISPLAY")
         self.display = Xlib.display.Display(self.display_num)
