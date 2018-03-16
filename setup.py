@@ -10,6 +10,7 @@ assert setuptools_version in setuptools_require, '{} is required'.format(setupto
 
 
 setup(
+    python_requires='>=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*',
     install_requires=['six>=1.10.0'],
     setup_requires=['setuptools-scm'],
     packages=[
